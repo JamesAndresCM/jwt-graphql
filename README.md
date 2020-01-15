@@ -8,6 +8,7 @@ cp env_sample .env; DEVISE_JWT_SECRET_KEY=$(rails secret); sed -i '' "s/DEVISE_J
 
 ## Setup:
 ```
+bundle install
 rails db:create db:migrate db:seed
 ```
 
