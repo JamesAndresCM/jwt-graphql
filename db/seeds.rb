@@ -14,7 +14,7 @@ CustomField.destroy_all
 CustomFieldTypeValue.destroy_all
 
 
-Account.create!(name: 'graphql', email: 'graphql@gmail.com', api_key: SecureRandom.hex)
+Account.create!(name: 'graphql', email: 'graphql@domain.com', api_key: SecureRandom.hex)
 
 4.times do |_i|
   Account.create!(api_key: SecureRandom.hex,name: Faker::Name.unique, email: Faker::Internet.unique.email)
