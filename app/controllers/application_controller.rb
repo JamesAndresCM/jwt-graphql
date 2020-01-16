@@ -1,9 +1,3 @@
-class ApplicationController < ActionController::API
-  force_ssl if: :ssl_configured?
+# frozen_string_literal: true
 
-  private
-
-  def ssl_configured?
-    Rails.env.production?
-  end
-end
+class ApplicationController < ActionController::API; end
