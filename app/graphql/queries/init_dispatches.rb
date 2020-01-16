@@ -3,7 +3,7 @@
 module Queries
   class InitDispatches < Queries::BaseQuery
     argument :date, Types::DateTimeType, required: true
-    type [Types::DispatchType], null: true
+    type Types::DispatchType.connection_type, null: true
 
     def resolve(date:)
       route_ids = today_route_ids(date)

@@ -4,7 +4,7 @@ module Queries
   class OpenRoutes < Queries::BaseQuery
     description 'Returns open routes by current_user and date argument'
     argument :date, Types::DateTimeType, required: true
-    type [Types::RouteType], null: true
+    type Types::RouteType.connection_type, null: false
 
     def resolve(date:)
       result = current_user.account.routes.open_in(date).eager_load(

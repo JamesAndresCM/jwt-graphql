@@ -220,74 +220,86 @@ query current_user {
 
 
 query account_open_routes {
-  account_open_routes(date: "2020-01-14") {
-    id
-    active
-    dispatch_date
-    start_time
-    end_time
-    dispatches {
-      id
-      route_id
-      status_id
-      estimated_at
-      arrived_at
-      slot
-      has_form
-      guide {
+  account_open_routes(date: "2020-01-15", first: 3) {
+    totalCount
+    pageInfo {
+      endCursor
+      startCursor
+      hasPreviousPage
+      hasNextPage
+    }
+    edges {
+      cursor
+      node {
         id
-        account_id
-        code
-        dispatches_count
-        place_id
-        first_estimated
-        service_time
-        min_delivery_time
-        max_delivery_time
-        beecode
         active
-        mode
-        custom_fields {
+        dispatch_date
+        start_time
+        end_time
+        dispatches {
           id
-          custom_field_type_id
-          model_id
-          model_type
-          value
-          created_at
-          custom_field_type {
+          route_id
+          status_id
+          estimated_at
+          arrived_at
+          slot
+          has_form
+          guide {
             id
-            name
-            model_type
-            show_in_web
-            show_in_mobile
-            has_many_flag
-            created_at
+            account_id
+            code
+            dispatches_count
+            place_id
+            first_estimated
+            service_time
+            min_delivery_time
+            max_delivery_time
+            beecode
+            active
+            mode
+            custom_fields {
+              id
+              custom_field_type_id
+              model_id
+              model_type
+              value
+              created_at
+              custom_field_type {
+                id
+                name
+                model_type
+                show_in_web
+                show_in_mobile
+                has_many_flag
+                created_at
+              }
+            }
+            address {
+              id
+              account_id
+              name
+              name_correct
+              city
+              state
+              postal_code
+              latitude
+              latitude_proposed
+              longitude
+              longitude_proposed
+              country
+              geocoding_status
+            }
+            contact {
+              id
+              account_id
+              email
+              phone
+              identifier
+              name
+              contact_type
+              last_sent_survey
+            }
           }
-        }
-        address {
-          id
-          account_id
-          name
-          name_correct
-          city
-          state
-          postal_code
-          latitude
-          latitude_proposed
-          longitude
-          longitude_proposed
-          country
-          geocoding_status
-        }
-        contact {
-          id
-          account_id
-          email
-          phone
-          identifier
-          name
-          contact_type
-          last_sent_survey
         }
       }
     }
@@ -295,76 +307,89 @@ query account_open_routes {
 }
 
 
+
 query init_dispatches {
-  initDispatches(date: "2020-01-14") {
-    id
-    route_id
-    status_id
-    estimated_at
-    arrived_at
-    slot
-    has_form
-    route {
-      id
-      active
-      dispatch_date
-      start_time
-      end_time
+  initDispatches(date: "2020-01-15") {
+    totalCount
+    pageInfo {
+      endCursor
+      startCursor
+      hasPreviousPage
+      hasNextPage
     }
-    guide {
-      id
-      account_id
-      code
-      dispatches_count
-      place_id
-      first_estimated
-      service_time
-      min_delivery_time
-      max_delivery_time
-      beecode
-      active
-      mode
-      custom_fields {
+    edges {
+      cursor
+      node {
         id
-        custom_field_type_id
-        model_id
-        model_type
-        value
-        created_at
-        custom_field_type {
+        route_id
+        status_id
+        estimated_at
+        arrived_at
+        slot
+        has_form
+        route {
           id
-          name
-          model_type
-          show_in_web
-          show_in_mobile
-          has_many_flag
-          created_at
+          active
+          dispatch_date
+          start_time
+          end_time
         }
-      }
-      address {
-        id
-        account_id
-        name
-        name_correct
-        city
-        state
-        postal_code
-        latitude
-        latitude_proposed
-        longitude
-        longitude_proposed
-        country
-        geocoding_status
-      }
-      contact {
-        id
-        account_id
-        email
-        phone
-        identifier
-        name
-        contact_type
-        last_sent_survey
+        guide {
+          id
+          account_id
+          code
+          dispatches_count
+          place_id
+          first_estimated
+          service_time
+          min_delivery_time
+          max_delivery_time
+          beecode
+          active
+          mode
+          custom_fields {
+            id
+            custom_field_type_id
+            model_id
+            model_type
+            value
+            created_at
+            custom_field_type {
+              id
+              name
+              model_type
+              show_in_web
+              show_in_mobile
+              has_many_flag
+              created_at
+            }
+          }
+          address {
+            id
+            account_id
+            name
+            name_correct
+            city
+            state
+            postal_code
+            latitude
+            latitude_proposed
+            longitude
+            longitude_proposed
+            country
+            geocoding_status
+          }
+          contact {
+            id
+            account_id
+            email
+            phone
+            identifier
+            name
+            contact_type
+            last_sent_survey
+          }
+        }
       }
     }
   }
