@@ -306,9 +306,12 @@ query account_open_routes {
     }
   }
 }
-
-
-
+````
+## Custom Filters 
+### possible filters: string (is_pickup, has_form, is_trunk) 
+### filter_value: boolean
+### Example: (filter: "is_pickup", filter_value: true)
+````
 query init_dispatches {
   initDispatches(date: "2020-01-15") {
     totalCount
