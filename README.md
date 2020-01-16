@@ -217,8 +217,9 @@ query current_user {
     }
   }
 }
-
-
+```
+### Parameters for pagination (first, last, before, after) [more info](https://graphql.org/learn/pagination/)
+```
 query account_open_routes {
   account_open_routes(date: "2020-01-15", first: 3) {
     totalCount
