@@ -17,7 +17,7 @@ CustomFieldTypeValue.destroy_all
 Account.create!(name: 'graphql', email: 'graphql@domain.com', api_key: SecureRandom.hex)
 
 4.times do |_i|
-  Account.create!(api_key: SecureRandom.hex,name: Faker::Name.unique, email: Faker::Internet.unique.email)
+  Account.create!(api_key: SecureRandom.hex,name: Faker::Name.unique.name, email: Faker::Internet.unique.email)
 end
 
 30.times do |_i|
@@ -28,7 +28,7 @@ end
   truck_id = (Truck.ids - TruckDriver.all.map(&:truck_id)).sample
   account = Truck.find(truck_id).account
 
-  TruckDriver.create!(account_id: account.id, name: Faker::Name.unique, truck_id: truck_id, username: Faker::Name.unique.first_name, pin_code: rand(1000..9999).to_s)
+  TruckDriver.create!(account_id: account.id, name: Faker::Name.unique.name, truck_id: truck_id, username: Faker::Name.unique.first_name, pin_code: rand(1000..9999).to_s)
 end
 
 20.times do |_i|
