@@ -9,6 +9,8 @@ module Types
     field :updateUser, mutation: Mutations::UpdateUserMutation
     field :sendResetPass, mutation: Mutations::SendResetPasswordInstructionsMutation
     field :resetPassword, mutation: Mutations::ResetPasswordMutation
+    field :createTrucks, mutation: Mutations::CreateTrucksMutation
+    field :destroyTrucks, mutation: Mutations::DestroyTruckMutation
     #
     # uncomment for unlock instructions
     #

@@ -1,8 +1,8 @@
 class Route < ApplicationRecord
-  belongs_to :truck, inverse_of: :routes
+  belongs_to :truck, inverse_of: :routes, dependent: :destroy
   belongs_to :truck_driver
   belongs_to :account
-  has_many :dispatches, inverse_of: :route
+  has_many :dispatches, inverse_of: :route, dependent: :destroy
 
   validates :account_id, presence: true
   scope :in_date, ->(date) { where(dispatch_date: date) }
