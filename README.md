@@ -101,6 +101,29 @@ mutation logout{
     status_logout
   }
 }
+
+mutation destroyTrucks {
+  destroyTrucks(input: {truck_id: 39}) {
+    status
+  }
+}
+
+(types: { truck: 0, pickup: 1, car: 2, motorcycle: 3, bicycle: 4, other: 5 })
+mutation createTrucks {
+  createTrucks(input: {identifier: "prueba", vehicle_type: "other", capacity: 1}) {
+    truck {
+      id
+      identifier
+      is_ramp
+      has_own_gps
+      vehicle_type
+      capacity
+    }
+    errors {
+      fullMessages
+    }
+  }
+}
 ```
 ## Queries
 ```
