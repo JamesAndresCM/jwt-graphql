@@ -18,5 +18,6 @@ module Types
     field :address, Types::AddressType, null: false
     field :dispatches, [Types::DispatchType], null: false
     field :custom_fields, [Types::CustomFieldType], null: false, camelize: false
+    field :custom_field_types, Types::CustomFieldTypeType, null: false, camelize: false
   end
 end
