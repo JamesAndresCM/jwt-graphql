@@ -12,7 +12,7 @@ module Mutations
 
     def resolve(password:, password_confirmation:, reset_password_token:)
       user = User.find_by_reset_password_token(reset_password_token)
-      return false unless user
+      raise GraphQL::ExecutionError, 'Error to change password' unless user
 
       user.reset_password(password, password_confirmation)
       { status: user }
