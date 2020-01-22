@@ -9,7 +9,8 @@ cp env_sample .env; DEVISE_JWT_SECRET_KEY=$(rails secret); sed -i '' "s/DEVISE_J
 ## Setup:
 ```
 bundle install
-rails db:create db:migrate db:seed
+rails db:create db:migrate
+bundle exec rake create_records:start[QUANTITY_RECORDS]
 ```
 
 ## Create user with mutation (signUp) and set token
