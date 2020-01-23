@@ -6,12 +6,8 @@ module Api
 
       def dispatches
         route_ids = today_route_ids(@date)
-        @result = on_route_dispatches(route_ids).not_managed
-        
+        @result = on_route_dispatches(route_ids).not_managed  
         render_json_dispatch('api_v1_init_dispatches_path')
-        #render json: { msg: 'not found records' } if @result.empty? and return
-
-        #render json: dispatch_params[:filter] && dispatch_params[:filter_value] ? filter_dispatches(dispatch_params[:filter], dispatch_params[:filter_value]) : serialize_dispatches(@result) and return
       end
 
       private
@@ -28,7 +24,6 @@ module Api
         @dispatches = dispatch_filters
         links_dispatch = links(path, params, @dispatches.size)
         total_elements = @dispatches.size
-
         render json: serialize_dispatches(@dispatches,
                                        links_dispatch,
                                        total_elements)
@@ -36,8 +31,15 @@ module Api
 
       def serialize_dispatches(data, links, total_elements)
         dispatches = data.offset_object(params)
-        DispatchSerializer.new(dispatches, include: ['guide.contact', 'guide.address', 'guide.pickup_address','guide.custom_fields','guide.custom_field_types'], links: links,
-                                 meta: meta_data(total_elements, dispatch_params)).serialized_json
+        DispatchSerializer.new(dispatches, 
+                               include: ['guide.contact',
+                                         'guide.address',
+                                         'guide.pickup_address',
+                                         'guide.custom_fields',
+                                         'guide.custom_field_types'],
+                               links: links,
+                               meta: meta_data(total_elements, dispatch_params)
+                               ).serialized_json
       end
 
       def today_route_ids(date)
