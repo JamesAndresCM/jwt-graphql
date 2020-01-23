@@ -1,0 +1,12 @@
+es:
+  dispatches:
+    pickup_statuses:
+      1: En ruta
+      2: Recogido
+      3: No recogido
+      4: Recogido parcial
+    normal_statuses:
+      1: En ruta a cliente
+      2: Entregado
+      3: No entregado
+      4: Entrega parcial
