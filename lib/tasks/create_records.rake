@@ -31,16 +31,16 @@ def create_data(quantity)
   puts "Create Account #{account.name}\n"
 
   quantity.times do
-    Truck.create!(capacity: rand(0..5), account: account, identifier: Faker::Code.unique.imei, vehicle_type: rand(0..5))
+    Truck.create!(capacity: rand(0..5), account: account, identifier: Faker::Code.imei, vehicle_type: rand(0..5))
   end
   print_create(quantity, 'trucks')
 
   account_trucks_ids = account.truck_ids
   quantity.times.each_with_index do |_, index|
     TruckDriver.create!(account: account,
-                        name: Faker::Name.unique.name,
+                        name: Faker::Name.name,
                         truck_id: account_trucks_ids[index],
-                        username: Faker::Name.unique.first_name,
+                        username: Faker::Name.first_name,
                         pin_code: rand(1000..9999).to_s)
   end
   print_create(quantity, 'truck_driver')
@@ -75,10 +75,10 @@ def create_data(quantity)
   print_create(quantity, 'routes')
   quantity.times do
     Contact.create!(account: account,
-                    email: Faker::Internet.unique.email,
-                    phone: Faker::PhoneNumber.unique.cell_phone,
+                    email: Faker::Internet.email,
+                    phone: Faker::PhoneNumber.cell_phone,
                     identifier: SecureRandom.hex,
-                    name: Faker::Name.unique.last_name,
+                    name: Faker::Name.last_name,
                     contact_type: rand(1..10),
                     last_sent_survey: Time.now)
   end
@@ -134,7 +134,7 @@ def create_data(quantity)
   end
   print_create(quantity, 'contact_address')
   quantity.times do
-    CustomFieldType.create(account: account, name: Faker::Internet.unique.slug, model_type: rand(0..3))
+    CustomFieldType.create(account: account, name: Faker::Internet.slug, model_type: rand(0..3))
   end
   print_create(quantity, 'custom_field_type')
   custom_field_types = CustomFieldType.where(account: account).ids
@@ -148,7 +148,7 @@ def create_data(quantity)
                         model_id: truck_driver_ids[index],
                         account: account,
                         model_type: 'TruckDriver',
-                        value: Faker::Internet.unique.domain_word)
+                        value: Faker::Internet.domain_word)
   end
   print_create(quantity, 'custom_field -- truck_driver model')
   quantity.times.each_with_index do |_, index|
@@ -156,7 +156,7 @@ def create_data(quantity)
                         model_id: account.dispatch_guide_ids[index],
                         account: account,
                         model_type: 'DispatchGuide',
-                        value: Faker::Internet.unique.domain_word)
+                        value: Faker::Internet.domain_word)
   end
   print_create(quantity, 'custom_field -- dispatch_guide model')
   quantity.times.each_with_index do |_, index|
@@ -164,7 +164,7 @@ def create_data(quantity)
                         model_id: account.truck_ids[index],
                         account: account,
                         model_type: 'Truck',
-                        value: Faker::Internet.unique.domain_word)
+                        value: Faker::Internet.domain_word)
   end
   print_create(quantity, 'custom_field -- truck model')
 end
