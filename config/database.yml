@@ -9,8 +9,8 @@ development:
 
 test:
   <<: *default
-  database: db/jwt_devise_test
+  database: jwt_devise_test
 
 production:
   <<: *default
-  database: db/jwt_devise_production
+  database: jwt_devise_production
