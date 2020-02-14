@@ -2,7 +2,6 @@
 
 
 ## Env vars
-he
 ```
 cp env_sample .env; DEVISE_JWT_SECRET_KEY=$(rails secret); sed -i '' "s/DEVISE_JWT_SECRET_KEY=/DEVISE_JWT_SECRET_KEY=$DEVISE_JWT_SECRET_KEY/" .env;
 ```
