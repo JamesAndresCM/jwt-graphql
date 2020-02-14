@@ -2,7 +2,6 @@
 
 
 ## Env vars
-
 ```
 cp env_sample .env; DEVISE_JWT_SECRET_KEY=$(rails secret); sed -i '' "s/DEVISE_JWT_SECRET_KEY=/DEVISE_JWT_SECRET_KEY=$DEVISE_JWT_SECRET_KEY/" .env;
 ```
@@ -13,6 +12,9 @@ bundle install
 rails db:create db:migrate
 bundle exec rake create_records:start[QUANTITY_RECORDS]
 ```
+
+### Benchmarking VEGETA
+<img src="https://github.com/JamesAndresCM/jwt-graphql/blob/master/benchmark-img/vegeta-bench.png" />
 
 ## Create user with mutation (signUp) and set token
 
